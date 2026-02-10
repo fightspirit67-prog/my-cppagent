@@ -1,0 +1,5 @@
+# API 키 설정 파일
+# 이 파일을 복사하여 config.ini로 저장하고 API 키를 입력하세요
+
+# Claude API 키 (https://console.anthropic.com/에서 발급)
+CLAUDE_API_KEY=your-api-key-here

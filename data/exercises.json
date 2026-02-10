@@ -1,0 +1,132 @@
+{
+  "초급": [
+    {
+      "title": "변수와 입출력 기초",
+      "description": "기본 변수 타입(int, float, string)을 사용하여 간단한 입출력 프로그램 작성",
+      "example": "사용자의 이름과 나이를 입력받아 출력하는 프로그램",
+      "hint": "cin, cout 사용"
+    },
+    {
+      "title": "if문 실전 연습",
+      "description": "조건문을 사용하여 게임 내 상태 판단 로직 구현",
+      "example": "플레이어 HP가 0 이하면 '사망', 30% 이하면 '위험', 그 외 '정상' 출력",
+      "hint": "Q1: 조건 없이 구현 가능한가? → if 사용 의무"
+    },
+    {
+      "title": "반복문으로 적 생성",
+      "description": "for문을 사용하여 여러 적 캐릭터를 생성하는 로직",
+      "example": "1~10번 적의 이름과 HP를 출력",
+      "hint": "동일 코드 반복 → 반복문 의무"
+    },
+    {
+      "title": "함수 분리 연습",
+      "description": "반복되는 코드를 함수로 분리",
+      "example": "데미지 계산 로직이 3곳에서 사용됨 → 함수로 분리",
+      "hint": "Q2: 동일 로직 2회 이상? → 함수 분리 의무"
+    }
+  ],
+  "초급후반": [
+    {
+      "title": "struct로 캐릭터 데이터 묶기",
+      "description": "관련된 데이터를 struct로 묶어서 관리",
+      "example": "캐릭터 이름, HP, 공격력을 struct Character로 정의",
+      "hint": "값 묶음 → struct 사용 의무"
+    },
+    {
+      "title": "배열 vs vector",
+      "description": "적 목록을 관리할 때 적절한 컨테이너 선택",
+      "example": "적의 수가 변할 때 vector 사용",
+      "hint": "동적 개수 → vector 기본"
+    },
+    {
+      "title": "switch문 활용",
+      "description": "상태에 따라 다른 행동을 하는 시스템",
+      "example": "플레이어 상태(대기, 공격, 방어, 회복)에 따른 처리",
+      "hint": "enum + switch 조합"
+    },
+    {
+      "title": "함수 매개변수와 반환값",
+      "description": "함수 간 데이터 전달 방식 연습",
+      "example": "공격 함수가 데미지를 계산하여 반환",
+      "hint": "참조(&) vs 값 복사 차이 이해"
+    }
+  ],
+  "중급초반": [
+    {
+      "title": "class vs struct 판단",
+      "description": "규칙 기반 데이터는 class로 보호",
+      "example": "Player의 gold는 직접 대입 금지 → private + GainGold() 함수",
+      "hint": "Q4: 직접 대입 시 버그 가능? → class 의무"
+    },
+    {
+      "title": "public vs private 설계",
+      "description": "접근 제한자 기계식 판단 연습",
+      "example": "HP는 public, Gold는 private + Gain/Spend",
+      "hint": "규칙 기반 자원 → private 강제"
+    },
+    {
+      "title": "생성자 활용",
+      "description": "객체 생성 시 초기화 로직",
+      "example": "Player 생성 시 기본 HP 100, Gold 0으로 시작",
+      "hint": "초기화 코드 중복 → 생성자 의무"
+    },
+    {
+      "title": "간단한 인벤토리 시스템",
+      "description": "아이템 추가/제거/조회 기능",
+      "example": "vector<Item>으로 인벤토리 관리",
+      "hint": "AddItem, RemoveItem 함수 분리"
+    }
+  ],
+  "중급": [
+    {
+      "title": "상속 도입 시점 판단",
+      "description": "Player, Enemy, NPC에 공통 로직이 3개 이상 반복",
+      "example": "Actor 기본 클래스 설계",
+      "hint": "조건 2개 충족 → 상속 의무"
+    },
+    {
+      "title": "virtual 함수 실전",
+      "description": "타입별로 다른 행동을 하는 함수",
+      "example": "Actor::Attack()을 Player, Enemy가 각자 다르게 구현",
+      "hint": "다형성 필요 → virtual 사용"
+    },
+    {
+      "title": "map으로 ID 기반 조회",
+      "description": "아이템 ID로 빠르게 정보를 찾아야 할 때",
+      "example": "unordered_map<int, ItemData>로 아이템 데이터베이스",
+      "hint": "프레임당 ID 조회 반복 → map 의무"
+    },
+    {
+      "title": "간단한 전투 시스템",
+      "description": "턴 기반 전투 구현",
+      "example": "플레이어 공격 → 적 공격 → HP 확인 → 승패 판정",
+      "hint": "각 단계를 함수로 분리"
+    }
+  ],
+  "중급후반": [
+    {
+      "title": "스킬 시스템 설계",
+      "description": "다양한 스킬을 확장 가능하게 설계",
+      "example": "Skill 기본 클래스 + FireballSkill, HealSkill 파생",
+      "hint": "스킬 추가 시 수정 최소화"
+    },
+    {
+      "title": "상태 패턴 적용",
+      "description": "캐릭터 상태별 행동 분리",
+      "example": "IdleState, AttackState, DefendState",
+      "hint": "if 50줄 초과 → 구조 변경 의무"
+    },
+    {
+      "title": "아이템 효과 시스템",
+      "description": "아이템마다 다른 효과 적용",
+      "example": "포션(HP 회복), 무기(공격력 증가), 방어구(방어력 증가)",
+      "hint": "Effect 인터페이스 + 구체 효과 클래스"
+    },
+    {
+      "title": "간단한 던전 게임",
+      "description": "여러 방을 이동하며 전투/아이템 획득",
+      "example": "Room 클래스, 방마다 Enemy와 Item 배치",
+      "hint": "지금까지 배운 모든 개념 통합"
+    }
+  ]
+}
