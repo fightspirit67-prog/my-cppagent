@@ -6,13 +6,27 @@ import os
 
 
 class ExerciseManager:
-    def __init__(self, data_file="data/exercises.json"):
+    def __init__(self, data_file=None):
         """
         연습 문제 관리자 초기화
         
         Args:
             data_file: 연습 문제 데이터 파일 경로
         """
+        if data_file is None:
+            # 여러 위치에서 exercises.json 찾기
+            possible_paths = [
+                'data/exercises.json',
+                '../data/exercises.json',
+                os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'exercises.json')
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    data_file = path
+                    break
+            if data_file is None:
+                data_file = 'data/exercises.json'  # 기본값
+        
         self.data_file = data_file
         self.exercises = self.load_exercises()
         self.levels = ["초급", "초급후반", "중급초반", "중급", "중급후반"]

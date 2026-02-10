@@ -95,11 +95,21 @@ class MainWindow(QMainWindow):
     
     def load_cpp_rules(self):
         """C++ 규칙 파일 로드"""
-        try:
-            with open("data/cpp_rules.txt", 'r', encoding='utf-8') as f:
-                return f.read()
-        except FileNotFoundError:
-            return "규칙 파일을 찾을 수 없습니다."
+        possible_paths = [
+            "data/cpp_rules.txt",
+            "../data/cpp_rules.txt",
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'cpp_rules.txt')
+        ]
+        
+        for rules_file in possible_paths:
+            if os.path.exists(rules_file):
+                try:
+                    with open(rules_file, 'r', encoding='utf-8') as f:
+                        return f.read()
+                except Exception:
+                    continue
+        
+        return "규칙 파일을 찾을 수 없습니다."
     
     def init_ui(self):
         """UI 초기화"""
