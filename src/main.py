@@ -74,16 +74,22 @@ class MainWindow(QMainWindow):
         if api_key:
             return api_key
         
-        # 2. config.ini 파일에서 로드
-        config_file = 'config.ini'
-        if os.path.exists(config_file):
-            try:
-                with open(config_file, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        if line.startswith('CLAUDE_API_KEY='):
-                            return line.split('=', 1)[1].strip()
-            except Exception:
-                pass
+        # 2. config.ini 파일에서 로드 (여러 위치 시도)
+        possible_paths = [
+            'config.ini',                    # 현재 폴더
+            '../config.ini',                 # 상위 폴더
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config.ini')  # 프로젝트 루트
+        ]
+        
+        for config_file in possible_paths:
+            if os.path.exists(config_file):
+                try:
+                    with open(config_file, 'r', encoding='utf-8') as f:
+                        for line in f:
+                            if line.startswith('CLAUDE_API_KEY='):
+                                return line.split('=', 1)[1].strip()
+                except Exception:
+                    continue
         
         return None
     
